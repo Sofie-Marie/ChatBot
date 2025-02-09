@@ -20,10 +20,10 @@
         /* Stilizarea pentru chatbot */
         #chatbot {
             display: none;
-            width: 280px; /* Fereastra de chat mai mică */
-            height: 350px; /* Înălțimea fereastrei mai mică */
-            background-color: #ffffff; /* Fundal alb pentru chatbot */
-            border: 2px solid #ff66b2; /* Contur roz pentru chatbot */
+            width: 350px; /* Dimensiunea fereastrei de chat */
+            height: 400px;
+            background-color: #ffffff;
+            border: 2px solid #ff66b2;
             border-radius: 10px;
             padding: 20px;
             margin-top: 20px;
@@ -40,8 +40,8 @@
         }
         #chatbox {
             width: 100%;
-            height: 180px; /* Înălțimea chatbox-ului */
-            border: 1px solid #ff66b2; /* Contur roz */
+            height: 200px; /* Înălțimea chatbox-ului */
+            border: 1px solid #ff66b2;
             border-radius: 5px;
             margin-top: 10px;
             padding: 10px;
@@ -52,14 +52,14 @@
         #user-input {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ff66b2; /* Contur roz */
+            border: 1px solid #ff66b2;
             border-radius: 5px;
             margin-top: 10px;
             font-size: 14px;
             background-color: #fff; /* Fundal alb pentru input */
         }
         #send-btn {
-            background-color: #ff66b2; /* Buton roz */
+            background-color: #ff66b2;
             color: white;
             padding: 10px;
             border: none;
@@ -68,7 +68,7 @@
             margin-top: 10px;
         }
         #send-btn:hover {
-            background-color: #ff3385; /* Roz mai închis la hover */
+            background-color: #ff3385;
         }
         /* Mesaj utilizator */
         .user-message {
@@ -78,16 +78,16 @@
             border-radius: 5px;
             margin-top: 5px;
         }
-        /* Mesaj Sofie Marie - ajustare lățime */
+        /* Mesaj Sofie Marie - lățimea mesajului este acum la fel ca a barei roz */
         .marie-message {
             text-align: left;
             background-color: #ffe6f2; /* Fundal roz deschis pentru mesajele Sofie Marie */
             padding: 5px;
             border-radius: 5px;
             margin-top: 5px;
-            width: 80%; /* Lățimea mesajului Sofie Marie ajustată */
-            margin-left: auto;
-            margin-right: auto; /* Centering the message */
+            width: 100%; /* Lățimea este acum 100%, pentru a fi la fel ca fereastra de chat */
+            margin-left: 0;
+            margin-right: 0; /* Eliminăm marginile laterale */
         }
     </style>
 </head>
