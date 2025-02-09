@@ -59,3 +59,9 @@ body {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
+
+#user-input {
+    width: 100%; /* Lățimea inputului se va ajusta acum la 300px */
+    box-sizing: border-box; /* Asigură că padding-ul este inclus în lățime */
+
+}

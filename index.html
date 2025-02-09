@@ -20,7 +20,7 @@
         /* Stilizarea pentru chatbot */
         #chatbot {
             display: none;
-            width: 300px; /* Dimensiunea fereastrei de chat (îngustată) */
+            width: 300px; /* Dimensiunea fereastrei de chat */
             height: 400px;
             background-color: #ffffff;
             border: 2px solid #ff66b2;
@@ -50,13 +50,14 @@
             background-color: #ffe6f2; /* Fundal roz deschis pentru chat */
         }
         #user-input {
-            width: 100%;
+            width: 100%; /* Lățimea inputului se va ajusta acum la 300px */
             padding: 10px;
             border: 1px solid #ff66b2;
             border-radius: 5px;
             margin-top: 10px;
             font-size: 14px;
             background-color: #fff; /* Fundal alb pentru input */
+            box-sizing: border-box; /* Asigură că padding-ul este inclus în lățime */
         }
         #send-btn {
             background-color: #ff66b2;
