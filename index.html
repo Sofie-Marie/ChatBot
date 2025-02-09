@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #f7f7f7;
+            background-color: #ffebf0; /* Fundal roz deschis */
         }
         img {
             width: 300px;
@@ -21,7 +21,7 @@
             width: 400px;
             height: 400px;
             background-color: #ffffff;
-            border: 2px solid #ccc;
+            border: 2px solid #ff66b2; /* Contur roz */
             border-radius: 10px;
             padding: 20px;
             margin-top: 20px;
@@ -30,7 +30,7 @@
             margin: 0 auto;
         }
         #chatbot-header {
-            background-color: #4CAF50;
+            background-color: #ff66b2; /* Fundal header roz */
             color: white;
             padding: 10px;
             border-radius: 5px;
@@ -39,24 +39,25 @@
         #chatbox {
             width: 100%;
             height: 200px;
-            border: 1px solid #ccc;
+            border: 1px solid #ff66b2; /* Contur roz */
             border-radius: 5px;
             margin-top: 10px;
             padding: 10px;
             overflow-y: auto;
             font-size: 14px;
-            background-color: #f1f1f1;
+            background-color: #ffe6f2; /* Fundal roz deschis pentru chat */
         }
         #user-input {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #ff66b2; /* Contur roz */
             border-radius: 5px;
             margin-top: 10px;
             font-size: 14px;
+            background-color: #fff; /* Fundal alb pentru input */
         }
         #send-btn {
-            background-color: #4CAF50;
+            background-color: #ff66b2; /* Buton roz */
             color: white;
             padding: 10px;
             border: none;
@@ -65,7 +66,23 @@
             margin-top: 10px;
         }
         #send-btn:hover {
-            background-color: #45a049;
+            background-color: #ff3385; /* Roz mai închis la hover */
+        }
+        /* Mesaj utilizator */
+        .user-message {
+            text-align: right;
+            background-color: #ffccff; /* Fundal roz deschis pentru mesajele utilizatorului */
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        /* Mesaj pisică */
+        .marie-message {
+            text-align: left;
+            background-color: #ffe6f2; /* Fundal roz deschis pentru mesajele pisicii */
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -90,10 +107,7 @@
                 // Mesajul inițial din partea pisicii Marie
                 var chatbox = document.getElementById("chatbox");
                 var marieMessageDiv = document.createElement("div");
-                marieMessageDiv.style.textAlign = "left";
-                marieMessageDiv.style.backgroundColor = "#f1f1f1";
-                marieMessageDiv.style.padding = "5px";
-                marieMessageDiv.style.borderRadius = "5px";
+                marieMessageDiv.classList.add("marie-message"); // Clasa pentru mesajul pisicii
                 marieMessageDiv.textContent = "Marie (Pisica): Buna! Eu sunt pisicuta Sofie Marie. Te astept cu drag la botezul meu. Daca imi spui numele si prenumele tau putem discuta mai mult.";
                 chatbox.appendChild(marieMessageDiv);
 
@@ -108,10 +122,7 @@
                 // Adăugăm mesajul utilizatorului în chat
                 var chatbox = document.getElementById("chatbox");
                 var userMessageDiv = document.createElement("div");
-                userMessageDiv.style.textAlign = "right";
-                userMessageDiv.style.backgroundColor = "#e0ffe0";
-                userMessageDiv.style.padding = "5px";
-                userMessageDiv.style.borderRadius = "5px";
+                userMessageDiv.classList.add("user-message"); // Clasa pentru mesajul utilizatorului
                 userMessageDiv.textContent = "Tu: " + userMessage;
                 chatbox.appendChild(userMessageDiv);
 
@@ -120,10 +131,7 @@
 
                 // Adaugă un răspuns automat din partea pisicii Marie
                 var botMessageDiv = document.createElement("div");
-                botMessageDiv.style.textAlign = "left";
-                botMessageDiv.style.backgroundColor = "#f1f1f1";
-                botMessageDiv.style.padding = "5px";
-                botMessageDiv.style.borderRadius = "5px";
+                botMessageDiv.classList.add("marie-message"); // Clasa pentru răspunsul pisicii
                 botMessageDiv.textContent = "Marie (Pisica): Mulțumesc pentru mesaj! Ce frumos te cheamă!";
                 chatbox.appendChild(botMessageDiv);
 
