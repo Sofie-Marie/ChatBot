@@ -65,3 +65,7 @@ body {
     box-sizing: border-box; /* Asigură că padding-ul este inclus în lățime */
 
 }
+
+.marie-message {
+    width: 300px; /* Lățimea mesajului Sofie Marie acum este 300px */
+}
