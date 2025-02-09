@@ -79,16 +79,21 @@
             border-radius: 5px;
             margin-top: 5px;
         }
-        /* Mesaj Sofie Marie - lățimea mesajului acum este ajustată la 300px (la fel ca inputul) */
+        /* Mesaj Sofie Marie - lățimea mesajului acum este ajustată la 100% (se încadrează perfect în fereastră) */
         .marie-message {
             text-align: left;
             background-color: #ffe6f2; /* Fundal roz deschis pentru mesajele Sofie Marie */
             padding: 5px;
             border-radius: 5px;
             margin-top: 5px;
-            width: 300px; /* Lățimea mesajului Sofie Marie acum este 300px */
-            margin-left: auto;
-            margin-right: auto; /* Centrarea mesajului */
+            width: 100%; /* Lățimea mesajului Sofie Marie se ajustează la 100% din fereastra de chat */
+            box-sizing: border-box; /* Asigură că padding-ul este inclus în lățimea totală */
+            font-size: 16px; /* Dimensiune mai mare a fontului */
+            font-weight: normal; /* Font normal pentru restul textului */
+        }
+        /* "Sofie Marie:" îngroșat */
+        .marie-message span {
+            font-weight: bold; /* Îngroșat pentru "Sofie Marie:" */
         }
     </style>
 </head>
@@ -114,7 +119,7 @@
                 var chatbox = document.getElementById("chatbox");
                 var marieMessageDiv = document.createElement("div");
                 marieMessageDiv.classList.add("marie-message"); // Clasa pentru mesajul Sofie Marie
-                marieMessageDiv.textContent = "Sofie Marie: Buna! Eu sunt pisicuta Sofie Marie. Te astept cu drag la botezul meu. Daca imi spui numele si prenumele tau putem discuta mai mult.";
+                marieMessageDiv.innerHTML = '<span>Sofie Marie:</span> Buna! Eu sunt pisicuta Sofie Marie. Te astept cu drag la botezul meu. Daca imi spui numele si prenumele tau putem discuta mai mult.';
                 chatbox.appendChild(marieMessageDiv);
 
                 chatbox.scrollTop = chatbox.scrollHeight;
@@ -138,7 +143,7 @@
                 // Adaugă un răspuns automat din partea Sofie Marie
                 var botMessageDiv = document.createElement("div");
                 botMessageDiv.classList.add("marie-message"); // Clasa pentru răspunsul Sofie Marie
-                botMessageDiv.textContent = "Sofie Marie: Mulțumesc pentru mesaj! Ce frumos te cheamă!";
+                botMessageDiv.innerHTML = '<span>Sofie Marie:</span> Mulțumesc pentru mesaj! Ce frumos te cheamă!';
                 chatbox.appendChild(botMessageDiv);
 
                 // Derulează automat în jos la cel mai recent mesaj
