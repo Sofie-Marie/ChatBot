@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Sofie Marie</title> <!-- Titlul paginii schimbat -->
+    <title>Chatbot Sofie Marie</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,15 +13,15 @@
             padding: 0;
         }
         img {
-            width: 300px;
+            width: 250px; /* Dimensiunea imaginii pisicii */
             height: auto;
             margin-top: 20px;
         }
         /* Stilizarea pentru chatbot */
         #chatbot {
             display: none;
-            width: 350px; /* Fereastra de chat mai îngustă */
-            height: 400px;
+            width: 280px; /* Fereastra de chat mai mică */
+            height: 350px; /* Înălțimea fereastrei mai mică */
             background-color: #ffffff; /* Fundal alb pentru chatbot */
             border: 2px solid #ff66b2; /* Contur roz pentru chatbot */
             border-radius: 10px;
@@ -40,7 +40,7 @@
         }
         #chatbox {
             width: 100%;
-            height: 200px;
+            height: 180px; /* Înălțimea chatbox-ului */
             border: 1px solid #ff66b2; /* Contur roz */
             border-radius: 5px;
             margin-top: 10px;
@@ -78,14 +78,14 @@
             border-radius: 5px;
             margin-top: 5px;
         }
-        /* Mesaj Sofie Marie */
+        /* Mesaj Sofie Marie - ajustare lățime */
         .marie-message {
             text-align: left;
             background-color: #ffe6f2; /* Fundal roz deschis pentru mesajele Sofie Marie */
             padding: 5px;
             border-radius: 5px;
             margin-top: 5px;
-            width: 80%; /* Lățimea mesajului Sofie Marie este mai mică */
+            width: 80%; /* Lățimea mesajului Sofie Marie ajustată */
             margin-left: auto;
             margin-right: auto; /* Centering the message */
         }
@@ -97,7 +97,7 @@
 
     <!-- Interfața chatbot-ului -->
     <div id="chatbot">
-        <div id="chatbot-header">Chatbot Sofie Marie</div> <!-- Titlu schimbat -->
+        <div id="chatbot-header">Chatbot Sofie Marie</div>
         <div id="chatbox"></div>
         <textarea id="user-input" placeholder="Scrie un mesaj..." rows="3"></textarea>
         <button id="send-btn">Trimite</button>
