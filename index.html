@@ -48,16 +48,17 @@
             overflow-y: auto;
             font-size: 14px;
             background-color: #ffe6f2; /* Fundal roz deschis pentru chat */
+            box-sizing: border-box; /* Asigură că padding-ul este inclus în lățime */
         }
         #user-input {
-            width: 100%; /* Lățimea inputului se va ajusta acum la 300px */
+            width: 100%; /* Lățimea inputului se va ajusta acum la 100% */
             padding: 10px;
             border: 1px solid #ff66b2;
             border-radius: 5px;
             margin-top: 10px;
             font-size: 14px;
             background-color: #fff; /* Fundal alb pentru input */
-            box-sizing: border-box; /* Asigură că padding-ul este inclus în lățime */
+            box-sizing: border-box; /* Asigură că padding-ul este inclus în lățimea totală */
         }
         #send-btn {
             background-color: #ff66b2;
@@ -86,7 +87,7 @@
             padding: 5px;
             border-radius: 5px;
             margin-top: 5px;
-            width: 100%; /* Lățimea mesajului Sofie Marie se ajustează la 100% din fereastra de chat */
+            width: calc(100% - 22px); /* Lățimea mesajului Sofie Marie se ajustează pentru a fi egală cu input-ul utilizatorului (având în vedere padding-ul) */
             box-sizing: border-box; /* Asigură că padding-ul este inclus în lățimea totală */
             font-size: 16px; /* Dimensiune mai mare a fontului */
             font-weight: normal; /* Font normal pentru restul textului */

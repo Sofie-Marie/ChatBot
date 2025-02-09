@@ -67,6 +67,5 @@ body {
 }
 
 .marie-message {
-    width: 100%; /* Lățimea mesajului Sofie Marie se ajustează la 100% din fereastra de chat */
-    font-size: 16px; /* Dimensiune mai mare a fontului */
+    width: calc(100% - 22px); /* Ajustăm lățimea pentru a corespunde cu input-ul utilizatorului */
 }
