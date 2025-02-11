@@ -3,27 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChatBot Sofie Marie</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Chatbot Sofie Marie</title>
+    <style>
+        /* Stilurile sunt aceleași ca și anterior */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            width: 250px;
+            height: auto;
+            margin-top: 20px;
+        }
+        #chatbot {
+            display: none;
+            width: 300px;
+            height: 400px;
+            background-color: #ffffff;
+            border: 2px solid #ff66b2;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin: 0 auto;
+        }
+        #chatbot-header {
+            background-color: #ff66b2;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        #chatbox {
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ff66b2;
+            border-radius: 5px;
+            margin-top: 10px;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 14px;
+            background-color: #ffe6f2;
+            box-sizing: border-box;
+        }
+        #user-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ff66b2;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 14px;
+            background-color: #fff;
+            box-sizing: border-box;
+        }
+        #send-btn {
+            background-color: #ff66b2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #send-btn:hover {
+            background-color: #ff3385;
+        }
+        .user-message {
+            text-align: right;
+            background-color: #ffccff;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .marie-message {
+            text-align: left;
+            background-color: #ffe6f2;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            width: calc(100% - 22px);
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .marie-message span {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-
-    <div id="chatbox" class="chatbox">
-        <div class="bot-message">
-            <p><strong>Sofie Marie:</strong> Buna! Eu sunt pisicuta Sofie Marie. Te astept cu drag la botezul meu. Daca imi spui cum te numesti, te pot ajuta cu informatii legate de masa la care vei sta si camera unde vei fi cazat.</p>
-        </div>
-
-        <!-- Formular pentru introducerea numelui -->
-        <div class="user-message">
-            <input type="text" id="user-name" placeholder="Introdu numele tau..." />
-            <button id="submit-name">Trimite</button>
-        </div>
-
-        <!-- Mesajele de raspuns ale botului -->
-        <div id="response"></div>
+    <img src="marie.png" alt="Sofie Marie the cat" />
+    <div id="chatbot">
+        <div id="chatbot-header">Chatbot Sofie Marie</div>
+        <div id="chatbox"></div>
+        <textarea id="user-input" placeholder="Scrie un mesaj..." rows="3"></textarea>
+        <button id="send-btn">Trimite</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Afișează chatbot-ul după o secundă
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("chatbot").style.display = "block";
 
+                // Mesajul inițial din partea Sofie Marie
+                var chatbox = document.getElementById("chatbox");
+                var marieMessageDiv = document.createElement("div");
+                marieMessageDiv.classList.add("marie-message");
+                marieMessageDiv.innerHTML = '<span>Sofie Marie:</span> Buna! Eu sunt pisicuta Sofie Marie. Te astept cu drag la botezul meu. Daca imi spui cum te numesti te pot ajuta cu informatii legate de masa la care vei sta si camera unde vei fi cazat.';
+                chatbox.appendChild(marieMessageDiv);
+
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }, 1000);
+        };
+
+        // Funcția care trimite mesajul utilizatorului
+        document.getElementById("send-btn").onclick = function() {
+            var userMessage = document.getElementById("user-input").value;
+            if (userMessage.trim() !== "") {
+                var chatbox = document.getElementById("chatbox");
+
+                // Adăugăm mesajul utilizatorului
+                var userMessageDiv = document.createElement("div");
+                userMessageDiv.classList.add("user-message");
+                userMessageDiv.textContent = "Tu: " + userMessage;
+                chatbox.appendChild(userMessageDiv);
+
+                document.getElementById("user-input").value = "";
+
+                // Verificăm dacă utilizatorul a introdus numele
+                if (userMessage.trim().length > 0) {
+                    var botMessageDiv = document.createElement("div");
+                    botMessageDiv.classList.add("marie-message");
+                    botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Ce frumos te cheamă, ${userMessage}! Acum te pot ajuta cu două întrebări: 
+                    1. La ce masă stai? 
+                    2. În ce cameră ești cazat? Te rog să îmi spui numărul întrebării la care vrei să răspund.`;
+                    chatbox.appendChild(botMessageDiv);
+                    chatbox.scrollTop = chatbox.scrollHeight;
+                }
+            }
+        };
+    </script>
 </body>
 </html>

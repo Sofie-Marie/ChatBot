@@ -1,50 +1,71 @@
-/* Stiluri pentru zona de chat */
-.chatbox {
-    width: 350px;
-    height: auto;
-    padding: 10px;
-    border: 2px solid #f1f1f1;
-    background-color: #fff;
-    border-radius: 10px;
+/* Stiluri generale pentru pagina */
+body {
     font-family: Arial, sans-serif;
-    margin: 20px auto;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+/* Stilizare pentru containerul chatbotului */
+#chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 260px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    padding: 10px;
     text-align: center;
+    display: none; /* Inițial chatbotul este ascuns */
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeIn 1s forwards; /* Animație de apariție */
 }
 
-/* Mesajele utilizatorului */
-.user-message input {
-    padding: 10px;
-    width: 80%;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+/* Imaginea pisicii Marie */
+#marie-gif {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    animation: bounce 2s infinite; /* Animație de sărit */
 }
 
-.user-message button {
+/* Caseta de mesaj */
+#chatbox {
+    margin-top: 10px;
+    background: #ffb6c1;
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #ff85a2;
+    border-radius: 10px;
     color: white;
-    cursor: pointer;
+    font-weight: bold;
 }
 
-.user-message button:hover {
-    background-color: #ff5780;
+/* Animația de apariție a chatbotului */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Mesajele botului */
-.bot-message p {
-    background-color: #ff85a2;
-    color: #fff;
-    padding: 8px;
-    border-radius: 8px;
-    width: fit-content;
-    margin: 10px auto;
-    max-width: 80%;
+/* Animația de sărit a imaginii */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
-/* Răspunsuri */
-#response {
-    margin-top: 20px;
+#user-input {
+    width: 100%; /* Lățimea inputului se va ajusta acum la 300px */
+    box-sizing: border-box; /* Asigură că padding-ul este inclus în lățime */
+
+}
+
+.marie-message {
+    width: calc(100% - 22px); /* Ajustăm lățimea pentru a corespunde cu input-ul utilizatorului */
 }
