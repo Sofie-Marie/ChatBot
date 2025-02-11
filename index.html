@@ -3,154 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Sofie Marie</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #ffffff; /* Fundal alb pentru întreaga pagină */
-            margin: 0;
-            padding: 0;
-        }
-        img {
-            width: 250px; /* Dimensiunea imaginii pisicii */
-            height: auto;
-            margin-top: 20px;
-        }
-        /* Stilizarea pentru chatbot */
-        #chatbot {
-            display: none;
-            width: 300px; /* Dimensiunea fereastrei de chat */
-            height: 400px;
-            background-color: #ffffff;
-            border: 2px solid #ff66b2;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-            margin: 0 auto;
-        }
-        #chatbot-header {
-            background-color: #ff66b2; /* Fundal header roz */
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        #chatbox {
-            width: 100%;
-            height: 200px; /* Înălțimea chatbox-ului */
-            border: 1px solid #ff66b2;
-            border-radius: 5px;
-            margin-top: 10px;
-            padding: 10px;
-            overflow-y: auto;
-            font-size: 14px;
-            background-color: #ffe6f2; /* Fundal roz deschis pentru chat */
-            box-sizing: border-box; /* Asigură că padding-ul este inclus în lățime */
-        }
-        #user-input {
-            width: 100%; /* Lățimea inputului se va ajusta acum la 100% */
-            padding: 10px;
-            border: 1px solid #ff66b2;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-size: 14px;
-            background-color: #fff; /* Fundal alb pentru input */
-            box-sizing: border-box; /* Asigură că padding-ul este inclus în lățimea totală */
-        }
-        #send-btn {
-            background-color: #ff66b2;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        #send-btn:hover {
-            background-color: #ff3385;
-        }
-        /* Mesaj utilizator */
-        .user-message {
-            text-align: right;
-            background-color: #ffccff; /* Fundal roz deschis pentru mesajele utilizatorului */
-            padding: 5px;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
-        /* Mesaj Sofie Marie - lățimea mesajului acum este ajustată la 100% (se încadrează perfect în fereastră) */
-        .marie-message {
-            text-align: left;
-            background-color: #ffe6f2; /* Fundal roz deschis pentru mesajele Sofie Marie */
-            padding: 5px;
-            border-radius: 5px;
-            margin-top: 5px;
-            width: calc(100% - 22px); /* Lățimea mesajului Sofie Marie se ajustează pentru a fi egală cu input-ul utilizatorului (având în vedere padding-ul) */
-            box-sizing: border-box; /* Asigură că padding-ul este inclus în lățimea totală */
-            font-size: 16px; /* Dimensiune mai mare a fontului */
-            font-weight: normal; /* Font normal pentru restul textului */
-        }
-        /* "Sofie Marie:" îngroșat */
-        .marie-message span {
-            font-weight: bold; /* Îngroșat pentru "Sofie Marie:" */
-        }
-    </style>
+    <title>ChatBot Sofie Marie</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Imaginea pisicii Sofie Marie -->
-    <img src="marie.png" alt="Sofie Marie the cat" />
 
-    <!-- Interfața chatbot-ului -->
-    <div id="chatbot">
-        <div id="chatbot-header">Chatbot Sofie Marie</div>
-        <div id="chatbox"></div>
-        <textarea id="user-input" placeholder="Scrie un mesaj..." rows="3"></textarea>
-        <button id="send-btn">Trimite</button>
+    <div id="chatbox" class="chatbox">
+        <div class="bot-message">
+            <p><strong>Sofie Marie:</strong> Buna! Eu sunt pisicuta Sofie Marie. Te astept cu drag la botezul meu. Daca imi spui cum te numesti, te pot ajuta cu informatii legate de masa la care vei sta si camera unde vei fi cazat.</p>
+        </div>
+
+        <!-- Formular pentru introducerea numelui -->
+        <div class="user-message">
+            <input type="text" id="user-name" placeholder="Introdu numele tau..." />
+            <button id="submit-name">Trimite</button>
+        </div>
+
+        <!-- Mesajele de raspuns ale botului -->
+        <div id="response"></div>
     </div>
 
-    <script>
-        // Afișează chatbot-ul după o secundă
-        window.onload = function() {
-            setTimeout(function() {
-                document.getElementById("chatbot").style.display = "block";
+    <script src="script.js"></script>
 
-                // Mesajul inițial din partea Sofie Marie
-                var chatbox = document.getElementById("chatbox");
-                var marieMessageDiv = document.createElement("div");
-                marieMessageDiv.classList.add("marie-message"); // Clasa pentru mesajul Sofie Marie
-                marieMessageDiv.innerHTML = '<span>Sofie Marie:</span> Buna! Eu sunt pisicuta Sofie Marie. Te astept cu drag la botezul meu. Daca imi spui numele si prenumele tau putem discuta mai mult.';
-                chatbox.appendChild(marieMessageDiv);
-
-                chatbox.scrollTop = chatbox.scrollHeight;
-            }, 1000);
-        };
-
-        // Funcția care trimite mesajul utilizatorului
-        document.getElementById("send-btn").onclick = function() {
-            var userMessage = document.getElementById("user-input").value;
-            if (userMessage.trim() !== "") {
-                // Adăugăm mesajul utilizatorului în chat
-                var chatbox = document.getElementById("chatbox");
-                var userMessageDiv = document.createElement("div");
-                userMessageDiv.classList.add("user-message"); // Clasa pentru mesajul utilizatorului
-                userMessageDiv.textContent = "Tu: " + userMessage;
-                chatbox.appendChild(userMessageDiv);
-
-                // Golește câmpul de input
-                document.getElementById("user-input").value = "";
-
-                // Adaugă un răspuns automat din partea Sofie Marie
-                var botMessageDiv = document.createElement("div");
-                botMessageDiv.classList.add("marie-message"); // Clasa pentru răspunsul Sofie Marie
-                botMessageDiv.innerHTML = '<span>Sofie Marie:</span> Mulțumesc pentru mesaj! Ce frumos te cheamă!';
-                chatbox.appendChild(botMessageDiv);
-
-                // Derulează automat în jos la cel mai recent mesaj
-                chatbox.scrollTop = chatbox.scrollHeight;
-            }
-        };
-    </script>
 </body>
 </html>

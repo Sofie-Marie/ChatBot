@@ -1,0 +1,4 @@
+Persoana,Camera,Masa
+Lita Irina,99,2
+Lita Gabriel,69,4
+Tudoran Carmen,Nu vei fi cazat aici,5
