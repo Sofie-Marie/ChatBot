@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Sofie Marie</title>
     <style>
-        /* Stilurile sunt aceleași ca și anterior */
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -93,6 +92,21 @@
         .marie-message span {
             font-weight: bold;
         }
+        #response-buttons {
+            margin-top: 10px;
+        }
+        .response-btn {
+            background-color: #ff66b2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .response-btn:hover {
+            background-color: #ff3385;
+        }
     </style>
 </head>
 <body>
@@ -100,17 +114,19 @@
     <div id="chatbot">
         <div id="chatbot-header">Chatbot Sofie Marie</div>
         <div id="chatbox"></div>
+        <div id="response-buttons">
+            <button class="response-btn" onclick="giveAnswer(1)">La ce masă stai?</button>
+            <button class="response-btn" onclick="giveAnswer(2)">În ce cameră ești cazat?</button>
+        </div>
         <textarea id="user-input" placeholder="Scrie un mesaj..." rows="3"></textarea>
         <button id="send-btn">Trimite</button>
     </div>
 
     <script>
-        // Afișează chatbot-ul după o secundă
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById("chatbot").style.display = "block";
 
-                // Mesajul inițial din partea Sofie Marie
                 var chatbox = document.getElementById("chatbox");
                 var marieMessageDiv = document.createElement("div");
                 marieMessageDiv.classList.add("marie-message");
@@ -121,13 +137,11 @@
             }, 1000);
         };
 
-        // Funcția care trimite mesajul utilizatorului
         document.getElementById("send-btn").onclick = function() {
             var userMessage = document.getElementById("user-input").value;
             if (userMessage.trim() !== "") {
                 var chatbox = document.getElementById("chatbox");
 
-                // Adăugăm mesajul utilizatorului
                 var userMessageDiv = document.createElement("div");
                 userMessageDiv.classList.add("user-message");
                 userMessageDiv.textContent = "Tu: " + userMessage;
@@ -135,18 +149,34 @@
 
                 document.getElementById("user-input").value = "";
 
-                // Verificăm dacă utilizatorul a introdus numele
                 if (userMessage.trim().length > 0) {
                     var botMessageDiv = document.createElement("div");
                     botMessageDiv.classList.add("marie-message");
-                    botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Ce frumos te cheamă, ${userMessage}! Acum te pot ajuta cu două întrebări: 
+                    botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Ce nume frumos ai! ${userMessage}, te pot ajuta cu raspunsurile la aceste întrebări: 
                     1. La ce masă stai? 
-                    2. În ce cameră ești cazat? Te rog să îmi spui numărul întrebării la care vrei să răspund.`;
+                    2. În ce cameră ești cazat? Te rog să îmi spui numărul întrebării la care vrei să răspund.`; 
                     chatbox.appendChild(botMessageDiv);
                     chatbox.scrollTop = chatbox.scrollHeight;
                 }
             }
         };
+
+        // Funcția care răspunde la întrebările utilizatorului
+        function giveAnswer(questionNumber) {
+            var chatbox = document.getElementById("chatbox");
+
+            var answerDiv = document.createElement("div");
+            answerDiv.classList.add("marie-message");
+
+            if (questionNumber === 1) {
+                answerDiv.innerHTML = '<span>Sofie Marie:</span> Stai la masa numărul 5, lângă fereastră!';
+            } else if (questionNumber === 2) {
+                answerDiv.innerHTML = '<span>Sofie Marie:</span> Ești cazat în camera 202, etajul 2.';
+            }
+
+            chatbox.appendChild(answerDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
     </script>
 </body>
 </html>
