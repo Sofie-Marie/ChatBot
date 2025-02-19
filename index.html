@@ -115,11 +115,12 @@
         <div id="chatbot-header">Chatbot Sofie Marie</div>
         <div id="chatbox"></div>
         <div id="response-buttons">
-            <button class="response-btn" onclick="giveAnswer(1)">La ce masă stai?</button>
-            <button class="response-btn" onclick="giveAnswer(2)">În ce cameră ești cazat?</button>
+            <!-- Butoane pentru întrebări -->
+            <button class="response-btn" id="question1-btn" style="display: none;" onclick="giveAnswer(1)">La ce masă stai?</button>
+            <button class="response-btn" id="question2-btn" style="display: none;" onclick="giveAnswer(2)">În ce cameră ești cazat?</button>
         </div>
-        <textarea id="user-input" placeholder="Scrie un mesaj..." rows="3"></textarea>
-        <button id="send-btn">Trimite</button>
+        <textarea id="user-input" placeholder="Scrie un mesaj..." rows="3" style="display: none;"></textarea>
+        <button id="send-btn" style="display: none;">Trimite</button>
     </div>
 
     <script>
@@ -133,7 +134,46 @@
                 marieMessageDiv.innerHTML = '<span>Sofie Marie:</span> Buna! Eu sunt pisicuta Sofie Marie. Te astept cu drag la botezul meu. Daca imi spui cum te numesti te pot ajuta cu informatii legate de masa la care vei sta si camera unde vei fi cazat.';
                 chatbox.appendChild(marieMessageDiv);
 
-                chatbox.scrollTop = chatbox.scrollHeight;
+                // Adaugă input pentru nume
+                var nameInput = document.createElement("input");
+                nameInput.setAttribute("id", "name-input");
+                nameInput.setAttribute("placeholder", "Cum te numesti?");
+                nameInput.setAttribute("type", "text");
+                nameInput.style.marginTop = "10px";
+                chatbox.appendChild(nameInput);
+                nameInput.focus();
+
+                nameInput.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter" && nameInput.value.trim() !== "") {
+                        var userMessage = nameInput.value;
+                        chatbox.innerHTML = ''; // Golește chat-ul
+
+                        var userMessageDiv = document.createElement("div");
+                        userMessageDiv.classList.add("user-message");
+                        userMessageDiv.textContent = "Tu: " + userMessage;
+                        chatbox.appendChild(userMessageDiv);
+
+                        var botMessageDiv = document.createElement("div");
+                        botMessageDiv.classList.add("marie-message");
+                        botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Încântată de cunoștință, ${userMessage}, te pot ajuta cu raspunsurile la aceste întrebări: 
+                        1. La ce masă stai? 
+                        2. În ce cameră ești cazat? Te rog să îmi spui numărul întrebării la care vrei să răspund.`;
+                        chatbox.appendChild(botMessageDiv);
+
+                        // Afișează butoanele pentru întrebări
+                        document.getElementById("question1-btn").style.display = "inline-block";
+                        document.getElementById("question2-btn").style.display = "inline-block";
+
+                        // Șterge input-ul de nume
+                        nameInput.style.display = "none";
+
+                        // Afișează input-ul pentru răspunsul utilizatorului
+                        document.getElementById("user-input").style.display = "inline-block";
+                        document.getElementById("send-btn").style.display = "inline-block";
+
+                        chatbox.scrollTop = chatbox.scrollHeight;
+                    }
+                });
             }, 1000);
         };
 
@@ -161,7 +201,6 @@
             }
         };
 
-        // Funcția care răspunde la întrebările utilizatorului
         function giveAnswer(questionNumber) {
             var chatbox = document.getElementById("chatbox");
 
