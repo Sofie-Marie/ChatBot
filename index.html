@@ -119,8 +119,6 @@
             <button class="response-btn" id="question1-btn" style="display: none;" onclick="giveAnswer(1)">La ce masă stai?</button>
             <button class="response-btn" id="question2-btn" style="display: none;" onclick="giveAnswer(2)">În ce cameră ești cazat?</button>
         </div>
-        <textarea id="user-input" placeholder="Scrie un mesaj..." rows="3" style="display: none;"></textarea>
-        <button id="send-btn" style="display: none;">Trimite</button>
     </div>
 
     <script>
@@ -165,40 +163,13 @@
                         // Șterge input-ul de nume
                         nameInput.style.display = "none";
 
-                        // Afișează input-ul pentru răspunsul utilizatorului
-                        document.getElementById("user-input").style.display = "inline-block";
-                        document.getElementById("send-btn").style.display = "inline-block";
-
                         chatbox.scrollTop = chatbox.scrollHeight;
                     }
                 });
             }, 1000);
         };
 
-        document.getElementById("send-btn").onclick = function() {
-            var userMessage = document.getElementById("user-input").value;
-            if (userMessage.trim() !== "") {
-                var chatbox = document.getElementById("chatbox");
-
-                var userMessageDiv = document.createElement("div");
-                userMessageDiv.classList.add("user-message");
-                userMessageDiv.textContent = "Tu: " + userMessage;
-                chatbox.appendChild(userMessageDiv);
-
-                document.getElementById("user-input").value = "";
-
-                if (userMessage.trim().length > 0) {
-                    var botMessageDiv = document.createElement("div");
-                    botMessageDiv.classList.add("marie-message");
-                    botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Ce nume frumos ai! ${userMessage}, te pot ajuta cu raspunsurile la aceste întrebări: 
-                    1. La ce masă stai? 
-                    2. În ce cameră ești cazat? Te rog să îmi spui numărul întrebării la care vrei să răspund.`; 
-                    chatbox.appendChild(botMessageDiv);
-                    chatbox.scrollTop = chatbox.scrollHeight;
-                }
-            }
-        };
-
+        // Funcție pentru a răspunde la întrebările selectate
         function giveAnswer(questionNumber) {
             var chatbox = document.getElementById("chatbox");
 
