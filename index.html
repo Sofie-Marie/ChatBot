@@ -5,81 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Sofie Marie</title>
     <style>
-        /* Stiluri pentru interfața chatbot-ului */
-        #chatbot {
-            background-color: #f7f7f7;
-            width: 300px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 10px;
+        body {
             font-family: Arial, sans-serif;
             text-align: center;
-            display: block;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
         }
-
+        img {
+            width: 250px;
+            height: auto;
+            margin-top: 20px;
+        }
+        #chatbot {
+            display: none;
+            width: 300px;
+            height: 400px;
+            background-color: #ffffff;
+            border: 2px solid #ff66b2;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin: 0 auto;
+        }
+        #chatbot-header {
+            background-color: #ff66b2;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
         #chatbox {
-            height: 300px;
+            width: 100%;
+            height: 200px;
+            border: 1px solid #ff66b2;
+            border-radius: 5px;
+            margin-top: 10px;
+            padding: 10px;
             overflow-y: auto;
-            margin-bottom: 20px;
+            font-size: 14px;
+            background-color: #ffe6f2;
+            box-sizing: border-box;
         }
-
-        .marie-message, .user-message {
-            margin-bottom: 10px;
-        }
-
-        .marie-message {
-            background-color: #f0c7b3;
+        #user-input {
+            width: 100%;
             padding: 10px;
-            border-radius: 10px;
-            display: inline-block;
-            text-align: left;
+            border: 1px solid #ff66b2;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 14px;
+            background-color: #fff;
+            box-sizing: border-box;
         }
-
-        .user-message {
-            background-color: #e1e1e1;
+        #send-btn {
+            background-color: #ff66b2;
+            color: white;
             padding: 10px;
-            border-radius: 10px;
-            display: inline-block;
-            text-align: left;
-        }
-
-        #response-buttons {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .response-btn {
-            background-color: #f7b5d5;
             border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        #send-btn:hover {
+            background-color: #ff3385;
+        }
+        .user-message {
+            text-align: right;
+            background-color: #ffccff;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .marie-message {
+            text-align: left;
+            background-color: #ffe6f2;
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            width: calc(100% - 22px);
+            box-sizing: border-box;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .marie-message span {
+            font-weight: bold;
+        }
+        #response-buttons {
+            margin-top: 10px;
+        }
+        .response-btn {
+            background-color: #ff66b2;
+            color: white;
             padding: 10px;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
             margin: 5px;
         }
-
         .response-btn:hover {
-            background-color: #e89fbd;
-        }
-
-        input[type="text"] {
-            margin-top: 10px;
-            padding: 10px;
-            width: 80%;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        #sofia-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 10px;
+            background-color: #ff3385;
         }
     </style>
 </head>
 <body>
+    <img src="marie.png" alt="Sofie Marie the cat" />
     <div id="chatbot">
-        <img src="sofia_pisica.jpg" alt="Sofie Pisica Marie" id="sofia-image"> <!-- Imaginea pisicii -->
+        <div id="chatbot-header">Chatbot Sofie Marie</div>
         <div id="chatbox"></div>
         <div id="response-buttons">
             <button class="response-btn" id="question1-btn" style="display: none;" onclick="giveAnswer(1)">La ce masă stai?</button>
@@ -88,7 +121,7 @@
     </div>
 
     <script>
-        // Lista de invitați (similară cu lista ta din fișierul text)
+        // Lista de invitați (numele, camera, masa)
         const listaInvitati = [
             { nume: "Lita Irina", camera: "Camera 99", masa: "Masa 2" },
             { nume: "Lita Gabriel", camera: "Camera 69", masa: "Masa 4" },
@@ -96,8 +129,8 @@
         ];
 
         let userName = '';
+        let invitat = null;
 
-        // Funcție care se execută la încărcarea paginii
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById("chatbot").style.display = "block";
@@ -113,6 +146,7 @@
                 nameInput.setAttribute("id", "name-input");
                 nameInput.setAttribute("placeholder", "Cum te numesti?");
                 nameInput.setAttribute("type", "text");
+                nameInput.style.marginTop = "10px";
                 chatbox.appendChild(nameInput);
                 nameInput.focus();
 
@@ -125,7 +159,7 @@
                         chatbox.appendChild(userMessageDiv);
 
                         // Căutăm utilizatorul în lista de invitați
-                        const invitat = listaInvitati.find(inv => inv.nume.trim().toLowerCase() === userName.trim().toLowerCase());
+                        invitat = listaInvitati.find(inv => inv.nume.trim().toLowerCase() === userName.trim().toLowerCase());
 
                         // Afișăm răspunsul pe baza rezultatului căutării
                         var botMessageDiv = document.createElement("div");
@@ -137,9 +171,9 @@
                             // Afișează butoanele pentru întrebări
                             document.getElementById("question1-btn").style.display = "inline-block";
                             document.getElementById("question2-btn").style.display = "inline-block";
-                            window.invitat = invitat; // Stocăm invitatul pentru a-l folosi ulterior
                         } else {
                             botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Imi pare rau, dar numele introdus nu este pe lista de invitati. Mai incearca! Trebuia sa treci de forma "Nume Prenume"`;
+
                             // Resetează inputul pentru un nou nume
                             var newNameInput = document.createElement("input");
                             newNameInput.setAttribute("id", "name-input");
@@ -155,7 +189,7 @@
                                     chatbox.appendChild(userMessageDiv);
 
                                     // Căutăm utilizatorul din nou în lista de invitați
-                                    const invitat = listaInvitati.find(inv => inv.nume.trim().toLowerCase() === userName.trim().toLowerCase());
+                                    invitat = listaInvitati.find(inv => inv.nume.trim().toLowerCase() === userName.trim().toLowerCase());
 
                                     // Afișăm din nou rezultatul căutării
                                     var botMessageDiv = document.createElement("div");
@@ -167,16 +201,11 @@
                                         // Afișează butoanele pentru întrebări
                                         document.getElementById("question1-btn").style.display = "inline-block";
                                         document.getElementById("question2-btn").style.display = "inline-block";
-                                        window.invitat = invitat; // Stocăm invitatul pentru a-l folosi ulterior
                                     } else {
                                         botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Imi pare rau, dar numele introdus nu este pe lista de invitati. Mai incearca! Trebuia sa treci de forma "Nume Prenume"`;
                                     }
-
                                     chatbox.appendChild(botMessageDiv);
                                     chatbox.scrollTop = chatbox.scrollHeight;
-
-                                    // Ascunde vechiul input și afișează noul
-                                    document.getElementById("name-input").style.display = "none";
                                 }
                             });
                         }
@@ -184,7 +213,7 @@
                         chatbox.appendChild(botMessageDiv);
                         chatbox.scrollTop = chatbox.scrollHeight;
 
-                        // Ascunde inputul de nume
+                        // Șterge input-ul de nume
                         nameInput.style.display = "none";
                     }
                 });
@@ -195,13 +224,15 @@
         function giveAnswer(questionNumber) {
             var chatbox = document.getElementById("chatbox");
 
-            let answerDiv = document.createElement("div");
+            var answerDiv = document.createElement("div");
             answerDiv.classList.add("marie-message");
 
-            if (questionNumber === 1) {
-                answerDiv.innerHTML = `<span>Sofie Marie:</span> Masa la care stai este ${window.invitat.masa}.`;
-            } else if (questionNumber === 2) {
-                answerDiv.innerHTML = `<span>Sofie Marie:</span> Camera în care ești cazat este ${window.invitat.camera}.`;
+            if (invitat) {
+                if (questionNumber === 1) {
+                    answerDiv.innerHTML = `<span>Sofie Marie:</span> Stai la ${invitat.masa}!`;
+                } else if (questionNumber === 2) {
+                    answerDiv.innerHTML = `<span>Sofie Marie:</span> Ești cazat în ${invitat.camera}.`;
+                }
             }
 
             chatbox.appendChild(answerDiv);
