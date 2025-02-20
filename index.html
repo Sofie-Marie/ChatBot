@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Sofie Marie</title>
     <style>
-        /* Stiluri pentru interfața inițială */
+        /* Stiluri pentru interfața chatbot-ului */
         #chatbot {
             background-color: #f7f7f7;
             width: 300px;
@@ -13,8 +13,8 @@
             padding: 20px;
             border-radius: 10px;
             font-family: Arial, sans-serif;
-            display: block;
             text-align: center;
+            display: block;
         }
 
         #chatbox {
@@ -88,7 +88,7 @@
     </div>
 
     <script>
-        // Structura de date pentru invitați
+        // Lista de invitați (similară cu lista ta din fișierul text)
         const listaInvitati = [
             { nume: "Lita Irina", camera: "Camera 99", masa: "Masa 2" },
             { nume: "Lita Gabriel", camera: "Camera 69", masa: "Masa 4" },
@@ -97,7 +97,7 @@
 
         let userName = '';
 
-        // Functie care se execută la încărcarea paginii
+        // Funcție care se execută la încărcarea paginii
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById("chatbot").style.display = "block";
