@@ -13,7 +13,8 @@
             padding: 20px;
             border-radius: 10px;
             font-family: Arial, sans-serif;
-            display: none;
+            display: block;
+            text-align: center;
         }
 
         #chatbox {
@@ -30,12 +31,16 @@
             background-color: #f0c7b3;
             padding: 10px;
             border-radius: 10px;
+            display: inline-block;
+            text-align: left;
         }
 
         .user-message {
             background-color: #e1e1e1;
             padding: 10px;
             border-radius: 10px;
+            display: inline-block;
+            text-align: left;
         }
 
         #response-buttons {
@@ -63,10 +68,18 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+
+        #sofia-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div id="chatbot">
+        <img src="sofia_pisica.jpg" alt="Sofie Pisica Marie" id="sofia-image"> <!-- Imaginea pisicii -->
         <div id="chatbox"></div>
         <div id="response-buttons">
             <button class="response-btn" id="question1-btn" style="display: none;" onclick="giveAnswer(1)">La ce masă stai?</button>
