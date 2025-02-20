@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Sofie Marie</title>
     <style>
-        /* Stiluri existente */
+        /* Stiluri pentru interfața inițială */
         #chatbot {
             background-color: #f7f7f7;
             width: 300px;
@@ -55,6 +55,14 @@
         .response-btn:hover {
             background-color: #e89fbd;
         }
+
+        input[type="text"] {
+            margin-top: 10px;
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -92,7 +100,6 @@
                 nameInput.setAttribute("id", "name-input");
                 nameInput.setAttribute("placeholder", "Cum te numesti?");
                 nameInput.setAttribute("type", "text");
-                nameInput.style.marginTop = "10px";
                 chatbox.appendChild(nameInput);
                 nameInput.focus();
 
@@ -119,7 +126,46 @@
                             document.getElementById("question2-btn").style.display = "inline-block";
                             window.invitat = invitat; // Stocăm invitatul pentru a-l folosi ulterior
                         } else {
-                            botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Imi pare rau, dar numele introdus nu este pe lista de invitati.`;
+                            botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Imi pare rau, dar numele introdus nu este pe lista de invitati. Mai incearca! Trebuia sa treci de forma "Nume Prenume"`;
+                            // Resetează inputul pentru un nou nume
+                            var newNameInput = document.createElement("input");
+                            newNameInput.setAttribute("id", "name-input");
+                            newNameInput.setAttribute("placeholder", "Cum te numesti?");
+                            newNameInput.setAttribute("type", "text");
+                            chatbox.appendChild(newNameInput);
+                            newNameInput.focus();
+
+                            newNameInput.addEventListener("keypress", function(event) {
+                                if (event.key === "Enter" && newNameInput.value.trim() !== "") {
+                                    userName = newNameInput.value;
+                                    userMessageDiv.textContent = "Tu: " + userName;
+                                    chatbox.appendChild(userMessageDiv);
+
+                                    // Căutăm utilizatorul din nou în lista de invitați
+                                    const invitat = listaInvitati.find(inv => inv.nume.trim().toLowerCase() === userName.trim().toLowerCase());
+
+                                    // Afișăm din nou rezultatul căutării
+                                    var botMessageDiv = document.createElement("div");
+                                    botMessageDiv.classList.add("marie-message");
+
+                                    if (invitat) {
+                                        botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Încântată de cunoștință, ${userName}! Te pot ajuta cu răspunsurile la întrebările de mai jos. Te rog să selectezi întrebarea la care vrei să răspund. :)`;
+
+                                        // Afișează butoanele pentru întrebări
+                                        document.getElementById("question1-btn").style.display = "inline-block";
+                                        document.getElementById("question2-btn").style.display = "inline-block";
+                                        window.invitat = invitat; // Stocăm invitatul pentru a-l folosi ulterior
+                                    } else {
+                                        botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Imi pare rau, dar numele introdus nu este pe lista de invitati. Mai incearca! Trebuia sa treci de forma "Nume Prenume"`;
+                                    }
+
+                                    chatbox.appendChild(botMessageDiv);
+                                    chatbox.scrollTop = chatbox.scrollHeight;
+
+                                    // Ascunde vechiul input și afișează noul
+                                    document.getElementById("name-input").style.display = "none";
+                                }
+                            });
                         }
 
                         chatbox.appendChild(botMessageDiv);
