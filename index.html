@@ -138,13 +138,13 @@
                 var chatbox = document.getElementById("chatbox");
                 var marieMessageDiv = document.createElement("div");
                 marieMessageDiv.classList.add("marie-message");
-                marieMessageDiv.innerHTML = '<span>Sofie Marie:</span> Buna! Eu sunt pisicuta Sofie Marie. Te astept cu drag la botezul meu. Daca imi spui cum te numesti te pot ajuta cu informatii legate de masa la care vei sta si camera unde vei fi cazat.';
+                marieMessageDiv.innerHTML = '<span>Sofie Marie:</span> Bună! Eu sunt pisicuța Sofie Marie. Te aștept cu drag la botezul meu. Dacă îmi spui cum te numești (prenume nume) te pot ajuta cu informații legate de masa la care vei sta și de camera unde vei fi cazat.';
                 chatbox.appendChild(marieMessageDiv);
 
                 // Adaugă input pentru nume
                 var nameInput = document.createElement("input");
                 nameInput.setAttribute("id", "name-input");
-                nameInput.setAttribute("placeholder", "Cum te numesti?");
+                nameInput.setAttribute("placeholder", "Cum te numești?");
                 nameInput.setAttribute("type", "text");
                 nameInput.style.marginTop = "10px";
                 chatbox.appendChild(nameInput);
@@ -166,18 +166,18 @@
                         botMessageDiv.classList.add("marie-message");
 
                         if (invitat) {
-                            botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Încântată de cunoștință, ${userName}! Te pot ajuta cu răspunsurile la întrebările de mai jos. Te rog să selectezi întrebarea la care vrei să răspund. :)`;
+                            botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Încântată de cunoștință, ${userName}! Te pot ajuta cu răspunsurile la întrebările de mai jos. Te rog să selectezi întrebarea la care vrei să răspund.`;
 
                             // Afișează butoanele pentru întrebări
                             document.getElementById("question1-btn").style.display = "inline-block";
                             document.getElementById("question2-btn").style.display = "inline-block";
                         } else {
-                            botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Imi pare rau, dar numele introdus nu este pe lista de invitati. Mai incearca! Trebuia sa treci de forma "Nume Prenume"`;
+                            botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Îmi pare rău, dar numele introdus nu îmi este cunoscut. Mai încearca!`;
 
                             // Resetează inputul pentru un nou nume
                             var newNameInput = document.createElement("input");
                             newNameInput.setAttribute("id", "name-input");
-                            newNameInput.setAttribute("placeholder", "Cum te numesti?");
+                            newNameInput.setAttribute("placeholder", "Cum te numești?");
                             newNameInput.setAttribute("type", "text");
                             chatbox.appendChild(newNameInput);
                             newNameInput.focus();
@@ -196,13 +196,13 @@
                                     botMessageDiv.classList.add("marie-message");
 
                                     if (invitat) {
-                                        botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Încântată de cunoștință, ${userName}! Te pot ajuta cu răspunsurile la întrebările de mai jos. Te rog să selectezi întrebarea la care vrei să răspund. :)`;
+                                        botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Încântată de cunoștință, ${userName}! Te pot ajuta cu răspunsurile la întrebările de mai jos. Te rog să selectezi întrebarea la care vrei să răspund.`;
 
                                         // Afișează butoanele pentru întrebări
                                         document.getElementById("question1-btn").style.display = "inline-block";
                                         document.getElementById("question2-btn").style.display = "inline-block";
                                     } else {
-                                        botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Imi pare rau, dar numele introdus nu este pe lista de invitati. Mai incearca! Trebuia sa treci de forma "Nume Prenume"`;
+                                        botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Îmi pare rău, dar numele introdus nu îmi este cunoscut. Mai încearcă!`;
                                     }
                                     chatbox.appendChild(botMessageDiv);
                                     chatbox.scrollTop = chatbox.scrollHeight;
@@ -229,9 +229,9 @@
 
             if (invitat) {
                 if (questionNumber === 1) {
-                    answerDiv.innerHTML = `<span>Sofie Marie:</span> Stai la ${invitat.masa}!`;
+                    answerDiv.innerHTML = `<span>Sofie Marie:</span> O să petreci la masa ${invitat.masa}!`;
                 } else if (questionNumber === 2) {
-                    answerDiv.innerHTML = `<span>Sofie Marie:</span> Ești cazat în ${invitat.camera}.`;
+                    answerDiv.innerHTML = `<span>Sofie Marie:</span> Ești cazat în camera ${invitat.camera}.`;
                 }
             }
 
