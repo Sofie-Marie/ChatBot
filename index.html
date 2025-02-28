@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Sofie Marie</title>
+    <title>Chatbot Sofie</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -123,9 +123,50 @@
     <script>
         // Lista de invitați (numele, camera, masa)
         const listaInvitati = [
-            { nume: "Lita Irina", camera: "Camera 99", masa: "Masa 2" },
-            { nume: "Lita Gabriel", camera: "Camera 69", masa: "Masa 4" },
-            { nume: "Tudoran Carmen", camera: "Nu vei fi cazat aici", masa: "Masa 5" }
+            { nume: "Irina Lita", camera: "Camera 3", masa: "Masa 2" },
+            { nume: "Gabriel Lita", camera: "Camera 3", masa: "Masa 2" },
+            { nume: "Marius Costache", camera: "Nu vei fi cazat aici", masa: "Masa 2" },
+            { nume: "Lavinia Puiu", camera: "Nu vei fi cazat aici", masa: "Masa 2" },
+            { nume: "Adriana Cococi", camera: "Camera 22", masa: "Masa 2" },
+            { nume: "Alexandru Tache", camera: "Camera 22", masa: "Masa 2" },
+            { nume: "Antonio Cococi", camera: "Camera 21", masa: "Masa 2" },
+            { nume: "Bogdan Stoica", camera: "Camera 6", masa: "Masa 2" },
+            { nume: "Silviu Soare", camera: "Nu vei fi cazat aici", masa: "Masa 2" },
+            { nume: "Corina Costache", camera: "Nu vei fi cazat aici", masa: "Masa 1" },
+            { nume: "Antonio Costache", camera: "Nu vei fi cazat aici", masa: "Masa 1" },
+            { nume: "Razvan Solzaru", camera: "Nu vei fi cazat aici", masa: "Masa 1" },
+            { nume: "Ioana Solzaru", camera: "Nu vei fi cazat aici", masa: "Masa 1" },
+            { nume: "Bogdan Pirvu", camera: "Nu vei fi cazat aici", masa: "Masa 1" },
+            { nume: "Larisa Pirvu", camera: "Nu vei fi cazat aici", masa: "Masa 1" },
+            { nume: "Razvan Manole", camera: "Nu vei fi cazat aici", masa: "Masa 1" },
+            { nume: "Alexandra Tudose", camera: "Nu vei fi cazat aici", masa: "Masa 1" },
+            { nume: "Magda Cococi", camera: "Camera 21", masa: "Masa 3" },
+            { nume: "Corina Soare", camera: "Nu vei fi cazat aici", masa: "Masa 3" },
+            { nume: "Cristi Soare", camera: "Nu vei fi cazat aici", masa: "Masa 3" },
+            { nume: "Valentina Lita", camera: "Nu vei fi cazat aici", masa: "Masa 3" },
+            { nume: "Nicolae Lita", camera: "Nu vei fi cazat aici", masa: "Masa 3" },
+            { nume: "Romeo Tudoran", camera: "Camera 2", masa: "Masa 3" },
+            { nume: "Mirabela Tudoran", camera: "Camera 2", masa: "Masa 3" },
+            { nume: "Catalin Tudoran", camera: "Camera 4", masa: "Masa 3" },
+            { nume: "Carmen Tudoran", camera: "Camera 4", masa: "Masa 3" },
+            { nume: "Andreea Grigore", camera: "Camera 10", masa: "Masa 5" },
+            { nume: "Bogdan Grigore", camera: "Camera 10", masa: "Masa 5" },
+            { nume: "Roxana Carabulea", camera: "Nu vei fi cazat aici", masa: "Masa 5" },
+            { nume: "Marius Toroipan", camera: "Camera 1", masa: "Masa 5" },
+            { nume: "Nicoleta Toroipan", camera: "Camera 1", masa: "Masa 5" },
+            { nume: "Marius Constantin", camera: "Camera 5", masa: "Masa 5" },
+            { nume: "Claudia Constantin", camera: "Camera 5", masa: "Masa 5" },
+            { nume: "Ioan Tepelus", camera: "Camera 12", masa: "Masa 5" },
+            { nume: "Roxana Tepelus", camera: "Camera 12", masa: "Masa 5" },
+            { nume: "Cristian Calin", camera: "Camera 9", masa: "Masa 4" },
+            { nume: "Andra Calin", camera: "Camera 9", masa: "Masa 4" },
+            { nume: "Cosmin Sandu", camera: "Nu vei fi cazat aici", masa: "Masa 4" },
+            { nume: "Ionut Buzatu", camera: "Camera 8", masa: "Masa 4" },
+            { nume: "Elena Buzatu", camera: "Camera 8", masa: "Masa 4" },
+            { nume: "Ionut Badeanu", camera: "Camera 7", masa: "Masa 4" },
+            { nume: "Cosmin Badea", camera: "Nu vei fi cazat aici", masa: "Masa 4" },
+            { nume: "Larisa Badea", camera: "Nu vei fi cazat aici", masa: "Masa 4" }
+
         ];
 
         let userName = '';
@@ -172,7 +213,7 @@
                             document.getElementById("question1-btn").style.display = "inline-block";
                             document.getElementById("question2-btn").style.display = "inline-block";
                         } else {
-                            botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Îmi pare rău, dar numele introdus nu îmi este cunoscut. Mai încearca!`;
+                            botMessageDiv.innerHTML = `<span>Sofie Marie:</span> Îmi pare rău, dar numele introdus nu îmi este cunoscut. Mai încearcă!`;
 
                             // Resetează inputul pentru un nou nume
                             var newNameInput = document.createElement("input");
